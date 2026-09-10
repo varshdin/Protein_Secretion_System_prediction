@@ -1,2 +1,18 @@
 cobra==0.29.0
 pandas==1.5.3
+conda install -c bioconda -c conda-forge diamond
+
+install CD_HIT
+install DIAMOND BLAST
+
+Apply CD_HIT 60%
+cd-hit -i Non-secreted.fasta -o Non-secreted_test_manual.fasta -c 0.6 -n 4
+bash "/mnt/c/Users/sumit/OneDrive/Documenten/Thesis/comp-ss/Scripts/sumit_secretion_prediction/Pipeline/run_cdhit_60_all_classes.sh/run_cdhit_60_all_classes.sh"
+
+Apply DIAMOND_BLAST
+
+pip install scikit-learn --break-system-packages
+pip install biopython --break-system-packages
+
+Train /Test data leackge approch 
+conda install -c conda-forge -c bioconda mmseqs2

@@ -1,14 +1,11 @@
 """
-Applies the T3SEpp-style dataset cleaning rule to DIAMOND blastp results.
-
-Rule (from T3SEpp, journals.asm.org/doi/10.1128/msystems.00288-20):
 Flag a non-effector sequence as "suspicious" (possibly mislabeled) if
 its match to a known effector has:
     - percent identity > 30%
     - AND alignment coverage > 70% of the query (non-effector) sequence length
 
 Usage:
-    python3 flag_suspicious_negatives.py <blast_tsv_file> <non_effector_fasta_file>
+    python3 flag_suspicious_negatives.py <blast_tsv_file> <non_secreted_fasta_file>
 """
 
 import sys
@@ -60,9 +57,9 @@ def main(tsv_file, fasta_file):
                 flagged.append(row)
 
     print(f"Total alignment rows in file: {len(all_rows)}")
-    print(f"Unique non-effector queries with matches: {len(set(r['query'] for r in all_rows))}")
+    print(f"Unique non-seceted queries with matches: {len(set(r['query'] for r in all_rows))}")
     print(f"\n=== FLAGGED (identity > 30% AND coverage > 70%) ===")
-    print(f"Number of suspicious non-effector sequences: {len(set(r['query'] for r in flagged))}\n")
+    print(f"Number of suspicious non-secreted sequences: {len(set(r['query'] for r in flagged))}\n")
 
     flagged_sorted = sorted(flagged, key=lambda r: r["pct_identity"], reverse=True)
     print(f"{'Query':<20}{'Subject':<15}{'%Identity':<12}{'Coverage%':<12}{'E-value':<15}")
@@ -70,13 +67,13 @@ def main(tsv_file, fasta_file):
         print(f"{r['query']:<20}{r['subject']:<15}{r['pct_identity']:<12}{r['coverage']:<12}{r['evalue']:<15}")
 
     flagged_ids = sorted(set(r["query"] for r in flagged))
-    with open("flagged_non_effector_ids.txt", "w") as out:
+    with open("flagged_non_secreted_ids.txt", "w") as out:
         for qid in flagged_ids:
             out.write(qid + "\n")
-    print(f"\nFlagged sequence IDs saved to: flagged_non_effector_ids.txt")
+    print(f"\nFlagged sequence IDs saved to: flagged_non_secreted_ids.txt")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python3 flag_suspicious_negatives.py <blast_tsv_file> <non_effector_fasta_file>")
+        print("Usage: python3 flag_suspicious_negatives.py <blast_tsv_file> <non_secreted_fasta_file>")
         sys.exit(1)
     main(sys.argv[1], sys.argv[2])
