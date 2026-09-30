@@ -1,1 +1,2 @@
 echo "*.dmnd" >> .gitignore__pycache__/
+**/MMsques2/**/combined_db
