@@ -2,6 +2,36 @@
 Removes flagged sequences from a FASTA file, based on the flagged IDs
 produced by flag_suspicious_negatives.py
 
+
+Purpose
+-------
+Removes sequences flagged as suspicious (likely mislabeled secreted)
+from the Non-secreted class, based on the ID list produced by
+flag_suspicious_data.py.
+
+Process
+-------
+1. Reads the flagged sequence IDs into a lookup set.
+2. Iterates through the original Non-secreted FASTA file, writing
+   every sequence NOT in the flagged set to a new, cleaned output file.
+3. Cross-checks that the number of sequences actually removed matches
+   the number of IDs that were flagged, warning if there's a mismatch
+   (commonly caused by ID formatting inconsistencies, e.g. stray
+   whitespace or carriage-return characters).
+4. Writes an audit log (removed_sequences_log.txt) recording exactly
+   which sequence IDs were removed, for provenance and reproducibility.
+
+Input
+-----
+1. The original Non-secreted FASTA file.
+2. The flagged ID list (flagged_non_secreted_ids.txt) from Step 4.
+
+Output
+------
+- A cleaned Non-secreted FASTA file, with suspicious sequences excluded.
+- removed_sequences_log.txt: full record of what was removed and why.
+
+
 Usage:
     python3 remove_flagged_sequences.py <original_fasta> <flagged_ids_txt> <output_cleaned_fasta>
 

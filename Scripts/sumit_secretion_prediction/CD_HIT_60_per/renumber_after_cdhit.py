@@ -7,17 +7,11 @@ numbering).
 
 Usage:
     python3 renumber_after_cdhit.py
-
-    No arguments needed -- paths and class list configured below.
 """
-
+ 
 from pathlib import Path
 from Bio import SeqIO
-
-# ============================================================
-# FILE CONFIGURATION -- edit these to match your real setup
-# ============================================================
-CD_HIT_DIR = Path("C:/Users/sumit/OneDrive/Documenten/Thesis/comp-ss/Results/sumit_secretion_prediction/phase0_dataset_prep/CD_HIT_60%")
+from secretion_prediction.config import CDHIT_DIR
 
 CLASSES = ["T1SS", "T2SS", "T3SS", "T4SS", "T5SS", "T6SS", "Non-secreted", "Sec", "Tat"]
 # ============================================================
@@ -29,7 +23,7 @@ def main():
     print("=" * 50)
 
     for class_name in CLASSES:
-        input_path = CD_HIT_DIR / f"{class_name}_final.fasta"
+        input_path = CDHIT_DIR / f"{class_name}_final.fasta"
 
         if not input_path.exists():
             print(f"\nSKIPPED: {class_name} -- file not found at {input_path}")

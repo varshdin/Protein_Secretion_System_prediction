@@ -4,6 +4,32 @@ its match to a known effector has:
     - percent identity > 30%
     - AND alignment coverage > 70% of the query (non-effector) sequence length
 
+Purpose 
+-------
+Screens the "Non-secreted" (negative) class for sequences that may be
+mislabeled Secreted, by comparing them against a DIAMOND BLAST search
+run against all known secreted/non-secreted classes (T1SS-T6SS, Sec, Tat).
+
+A Non-secreted sequence is flagged as suspicious if its best match to
+a known secreted class satisfies BOTH:
+    - percent identity  > 30%
+    - alignment coverage > 70% of the query sequence length
+
+Input
+-----
+1. A DIAMOND BLAST tabular output file (non_secreted_vs_secreted.tsv),
+   comparing Non-secreted sequences (query) against the combined
+   secreted reference (subject).
+2. The Non-secreted FASTA file, used to compute per-sequence lengths
+   for coverage calculation.
+
+Output
+------
+- Console report: total alignments checked, number of sequences
+  flagged, and a table of flagged matches sorted by identity.
+- flagged_non_secreted_ids.txt: one flagged sequence ID per line,
+  consumed by remove_flagged_sequence.py in the next pipeline step.
+    
 Usage:
     python3 flag_suspicious_negatives.py <blast_tsv_file> <non_secreted_fasta_file>
 """

@@ -1,0 +1,1 @@
+echo "*.dmnd" >> .gitignore__pycache__/

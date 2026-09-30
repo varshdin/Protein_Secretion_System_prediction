@@ -16,14 +16,16 @@
 # ============================================================
 
 set -e
+pwd
 
-# ---- EDIT THESE PATHS to match your real folder structure ----
-CD_HIT_DIR="/mnt/c/Users/sumit/OneDrive/Documenten/Thesis/comp-ss/Results/sumit_secretion_prediction/phase0_dataset_prep/CD_HIT_60%"
-DIAMOND_DIR="/mnt/c/Users/sumit/OneDrive/Documenten/Thesis/comp-ss/Results/sumit_secretion_prediction/phase0_dataset_prep/DIAMOND_BLAST"
-CLEAN_DATA_DIR="/mnt/c/Users/sumit/OneDrive/Documenten/Thesis/comp-ss/Results/sumit_secretion_prediction/phase0_dataset_prep/Clean_Data"
-DIAMOND_SCRIPTS_DIR="/mnt/c/Users/sumit/OneDrive/Documenten/Thesis/comp-ss/Scripts/sumit_secretion_prediction/DIAMOND_BLAST"
+cd "$(dirname "$0")/../../../"
+REPO_ROOT="$(pwd)"
 
-EFFECTOR_CLASSES=("T1SS" "T2SS" "T3SS" "T4SS" "T5SS" "T6SS")
+CD_HIT_DIR="${REPO_ROOT}/Results/sumit_secretion_prediction/phase0_dataset_prep/CD_HIT_60_per"
+DIAMOND_DIR="${REPO_ROOT}/Results/sumit_secretion_prediction/phase0_dataset_prep/DIAMOND_BLAST"
+CLEAN_DATA_DIR="${REPO_ROOT}/Results/sumit_secretion_prediction/phase0_dataset_prep/Clean_Data"
+DIAMOND_SCRIPTS_DIR="${REPO_ROOT}/Scripts/sumit_secretion_prediction/DIAMOND_BLAST"
+SECRETED_CLASSES=("T1SS" "T2SS" "T3SS" "T4SS" "T5SS" "T6SS")
 REFERENCE_CLASSES=("T1SS" "T2SS" "T3SS" "T4SS" "T5SS" "T6SS" "Sec" "Tat")
 
 mkdir -p "$DIAMOND_DIR" "$CLEAN_DATA_DIR"

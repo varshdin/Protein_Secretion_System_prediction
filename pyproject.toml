@@ -1,0 +1,12 @@
+[project]
+name = "secretion-prediction"        # package name
+version = "0.1.0"                    # version number
+description = "..."                  # what package do
+requires-python = ">=3.9"            # minimum Python version need
+
+[tool.setuptools.packages.find]
+where = ["src"]                      # tell tool: real code inside src/ folder
+
+[build-system]
+requires = ["setuptools>=61.0"]      # tool used to build/install package
+build-backend = "setuptools.build_meta"
