@@ -1,2 +1,6 @@
-echo "*.dmnd" >> .gitignore__pycache__/
+venv/
+venv_wsl/
+*.dmnd
+__pycache__/
+*.egg-info/
 **/MMsques2/**/combined_db

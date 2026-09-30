@@ -1,0 +1,45 @@
+# Secretion Protein & Secretion Channel Prediction
+
+**Thesis project:** ML/DL classifiers for predicting bacterial secretion 
+system effector types (T1SE–T6SE) and secretion channel/system types 
+(T1SS–T6SS) from protein sequence data.
+
+Part of the **HYDROCOW** project.
+
+---
+
+## 1. Author & Supervision
+
+| Role | Name |
+|---|---|
+| Student | Sumit — M.Sc. High Integrity Systems, Frankfurt UAS |
+| First Supervisor | Prof. Dr. Axel Blokesch |
+| External Supervisor | Dr. Karan Kumar (Postdoc, iAMB, RWTH Aachen) |
+
+---
+
+## 2. Project Goal
+
+Build and evaluate machine learning and deep learning models to classify 
+bacterial protein sequences into secretion effector types (T1SE–T6SE) 
+and secretion system/channel types (T1SS–T6SS), using classical ML 
+(Random Forest, XGBoost) and deep learning (ESM2 protein language model 
+embeddings).
+
+---
+
+## 3. Data Sources
+
+| Dataset | Classes covered | Source |
+|---|---|---|
+| DeepSecE | [fill: which classes] | [fill: link/citation] |
+| PLM-Effector (Oct 2024) | T1SE–T6SE | [fill: link/citation] |
+| SignalP | [fill: which classes] | [fill: link/citation] |
+| T5SE (extra) | T5SE | [fill: link/citation] |
+
+Raw files stored at: `Data/sumit_secretion_prediction/raw/`
+**Rule: raw data is never modified. All cleaning outputs go to `Results/`.**
+
+---
+
+## 4. Folder Structure

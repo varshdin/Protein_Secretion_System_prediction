@@ -16,19 +16,17 @@ No external libraries required (pure Python, no BioPython needed).
 
 import os
 import re
+from secretion_prediction.config import RAW_DEEPSECE, RAW_PLM_EFFECTOR, RAW_DIR
 
-# ============================================================
-# CONFIG — EDIT THESE PATHS TO MATCH YOUR ACTUAL FILES
-# ============================================================
 
 # DeepSecE's single combined file (all types mixed together)
-DEEPSECE_FILE = r"C:\Users\sumit\OneDrive\Documenten\Thesis\comp-ss\Data\sumit_secretion_prediction\raw\deepsecE\Train-2918.fasta"
+DEEPSECE_FILE = RAW_DEEPSECE / "Train-2918.fasta"
 
 # Standalone Non-effector file (if you want to treat it separately from PLM-Effector)
-NON_EFFECTOR_FILE = r"C:\Users\sumit\OneDrive\Documenten\Thesis\comp-ss\Data\sumit_secretion_prediction\raw\Non-effector.fasta"
+NON_EFFECTOR_FILE = RAW_DIR / "Non-effector.fasta"
 
 # Folder containing PLM-Effector's per-type FASTA files
-PLM_EFFECTOR_DIR = r"C:\Users\sumit\OneDrive\Documenten\Thesis\comp-ss\Data\sumit_secretion_prediction\raw\PLM-Effector"
+PLM_EFFECTOR_DIR = RAW_PLM_EFFECTOR
 
 # Mapping from our internal type label → exact PLM-Effector filename
 # Edit this if your filenames differ (e.g. T1SE_train.fasta, T1SE.fasta, etc.)
@@ -38,21 +36,14 @@ PLM_FILES = {
     "T3SE": "T3SE_train.fasta",
     "T4SE": "T4SE_train.fasta",
     "T6SE": "T6SE_train.fasta",
-    # For Non-effector, we will prioritize the dedicated NON_EFFECTOR_FILE
-    # and ignore PLM's Non-effector file if present. If you want to use PLM's
-    # Non-effector instead, set this to the correct filename, e.g. "Non-effector_train.fasta"
     "Non-effector": None,
 }
 
-# The type labels you want to process.
-# These must match:
-#   - the prefix in DeepSecE headers (e.g. "T1SE-...", "Non-effector-...")
-#   - the keys in PLM_FILES
 TYPE_LABELS = ["T1SE", "T2SE", "T3SE", "T4SE", "T6SE", "Non-effector"]
 
 # Output folder (relative to this script's directory)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-OUTPUT_DIR = os.path.join(SCRIPT_DIR, "output")
+OUTPUT_DIR = RAW_DIR / "Combined_raw_dataset"
 
 # ============================================================
 # CORE FUNCTIONS
