@@ -28,7 +28,8 @@ echo "=========================================="
 echo "STAGE 1: CD-HIT (60%) -- all classes"
 echo "=========================================="
 
-CLASSES=("T1SS" "T2SS" "T3SS" "T4SS" "T5SS" "T6SS" "Non-secreted" "Sec" "Tat")
+#CLASSES=("T1SS" "T2SS" "T3SS" "T4SS" "T5SS" "T6SS" "Non-secreted" "Sec" "Tat")
+CLASSES=("Sec" "Tat")
 
 for class in "${CLASSES[@]}"; do
     echo "Running CD-HIT for class: $class"

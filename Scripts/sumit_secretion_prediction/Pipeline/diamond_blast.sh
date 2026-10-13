@@ -12,7 +12,7 @@
 # Run this from WSL/Ubuntu (DIAMOND is a Linux tool).
 #
 # Usage:
-#     bash run_diamond_pipeline.sh
+#     bash Scripts/sumit_secretion_prediction/Pipeline/diamond_blast.sh
 # ============================================================
 
 set -e
