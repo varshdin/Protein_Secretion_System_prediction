@@ -2,3 +2,4 @@ cobra==0.29.0
 pandas==1.5.3
 scikit-learn
 biopython
+python==3.14.6

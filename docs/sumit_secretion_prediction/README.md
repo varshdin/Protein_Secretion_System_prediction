@@ -130,14 +130,14 @@ Run in this order:
    `Results/.../Train_Test/train.fasta` and `test.fasta`.
 
 **Output of Phase 0:** deduplicated, cross-contamination-checked dataset, 
-split into train/test FASTA files, ready for feature engineering.
+split into train/test FASTA files based on clustering, ready for feature engineering.
 
 ---
 
 ## 6. Pipeline — Phase 1 (Feature Engineering) — in progress
 
 - **iFeatureOmega** (`feature_engineering/iFeatureOmega/feature_extraction.ipynb`) 
-  — extracts sequence-based features (e.g. AAC, DPC, CTD)
+  — extracts sequence-based features (e.g. AAC, DPC, N-window , C-window, ESM-2)
 - **POSSUM** (`feature_engineering/POSSUM/`) — extracts PSSM-based 
   evolutionary features
 - **combine/** — merges feature sets from both tools into a single 
