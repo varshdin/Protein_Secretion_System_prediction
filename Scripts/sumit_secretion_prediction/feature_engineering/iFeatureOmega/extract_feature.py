@@ -10,6 +10,11 @@ Usage:
     python extract_feature.py --block aac --fasta train.fasta
     python extract_feature.py --block dpc --fasta train.fasta
 
+conda create -n ifeature_env python=3.7
+conda activate ifeature_env
+pip install iFeatureOmegaCLI
+
+
 All paths are resolved against the repository root, so the script works
 from any working directory and on any machine that clones the repo.
 """

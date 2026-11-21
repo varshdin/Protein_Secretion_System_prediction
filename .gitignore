@@ -1,6 +1,35 @@
+# --- environments and caches -------------------------------------------
 venv/
 venv_wsl/
-*.dmnd
 __pycache__/
+*.pyc
 *.egg-info/
-**/MMsques2/**/combined_db
+
+# --- tool databases and intermediates ----------------------------------
+*.dmnd
+**/MMsques2/**/combined_db*
+**/MMsques2/**/combined_clu*
+**/MMsques2/**/tmp/
+Results/sumit_secretion_prediction/phase0_dataset_prep/DIAMOND_BLAST/*.tsv
+
+# --- window-selection scratch ------------------------------------------
+# The rejected 30/30, 40/40 and 60/60 embeddings and the window FASTAs.
+Results/sumit_secretion_prediction/phase1_feature_engineering/features/N_C_window/N_C_30_esm2.csv
+Results/sumit_secretion_prediction/phase1_feature_engineering/features/N_C_window/N_C_40_esm2.csv
+Results/sumit_secretion_prediction/phase1_feature_engineering/features/N_C_window/N_C_60_esm2.csv
+Results/sumit_secretion_prediction/phase1_feature_engineering/features/N_C_window/N_C_*.fasta
+
+
+# --- notebooks ----------------------------------------------------------
+# Exploration and implementation only, with one exception:
+# Generate_Embeddings.ipynb is the record of how the 50/50 window was
+# selected (four conditions, stratified 5-fold CV, per-class F1), so it
+# stays in the repository.
+*.ipynb
+.ipynb_checkpoints/
+!Scripts/sumit_secretion_prediction/feature_engineering/ESM-2/Generate_Embeddings.ipynb
+
+# --- OS clutter ---------------------------------------------------------
+Thumbs.db
+desktop.ini
+.DS_Store

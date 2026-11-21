@@ -1,2 +1,15 @@
+# General default: let git normalise text it recognises.
+* text=auto
+
+# Scripts: force LF in the repository AND on checkout. A .sh with CRLF fails
+# in WSL with "/bin/bash^M: bad interpreter", so a Windows clone of this repo
+# would be unable to run phase 0 at all.
+*.sh  text eol=lf
+*.py  text eol=lf
+
+# Data: never convert. These FASTA files have CRLF line endings, and every
+# result in this repository was produced from exactly these bytes. If git
+# normalised them, a cloner would feed different input to CD-HIT, DIAMOND and
+# MMseqs2 than was used here, and clustering could differ.
 *.fasta -text
-*.fa -text
+*.tsv   -text
